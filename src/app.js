@@ -36,7 +36,7 @@ if (!(config.rpc.detached || process.argv.includes('detached'))) {
 			platformDefaults.win32=platformDefaults.winalt;
 		}
 	}
-  const command = config.vlcPath || platformDefaults[process.platform] || 'vlc';
+  const command = platformDefaults[process.platform]
   const child = spawn(command, ['--extraintf', 'http', '--http-host', config.vlc.address, '--http-password', config.vlc.password, '--http-port', config.vlc.port]);
   child.on('exit', () => {
   	console.log("VLC closed; Exiting.");
